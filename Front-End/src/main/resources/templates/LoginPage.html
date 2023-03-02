@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Catalog</title>
+    <link rel="stylesheet" href="/assets/fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- https://fonts.google.com/ -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-video-catalog.css">
+</head>
+<!--
+
+TemplateMo 552 Video Catalog
+
+https://templatemo.com/tm-552-video-catalog
+
+-->
+<body>
+<div class="tm-page-wrap mx-auto">
+    <div class="position-relative">
+        <div class="tm-welcome-container tm-fixed-header tm-fixed-header-3">
+            <div class="text-center">
+                <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+                    Welcome<br>Back!
+                </p>
+            </div>
+        </div>
+
+        <div id="tm-fixed-header-bg"></div> <!-- Header image -->
+    </div>
+
+    <!-- Page content -->
+    <main>
+        <div class="container-fluid px-0">
+            <div class="mx-auto tm-content-container">
+                <div class="row mt-3 mb-5 pb-3">
+                    <div class="col-12">
+                        <div class="mx-auto tm-about-text-container px-3">
+                            <h2 class="tm-page-title mb-4 tm-text-primary">Login </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-auto pb-3 tm-about-text-container px-3">
+                    <div class="row">
+                        <div class="col-lg-6 mb-5">
+                            <form id="contact-form" method="POST" class="tm-contact-form" action="/login">
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control rounded-0"
+                                           placeholder="Username" required=""/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" class="form-control rounded-0"
+                                           placeholder="Password" required=""/>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit"
+                                            class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit">
+                                        <span>Submit</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax-window parallax-window-2" data-parallax="scroll"
+             data-image-src="/assets/img/contact-2.jpg"></div>
+    </main>
+
+    <div th:replace="~{fragments/footer::footer}"></div>
+
+
+</div>
+
+
+<script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/parallax.min.js"></script>
+</body>
+</html>

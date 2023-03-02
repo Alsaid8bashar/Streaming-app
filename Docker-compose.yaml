@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  mysqldb-service:
+    volumes:
+      - mysql-data:/var/lib/mysql
+    build: ./Mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=root --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+  authentication-service:
+    build: ./Authentication
+    container_name: auth-server
+    ports:
+      - '8088:8088'
+  upload-service:
+    build: ./demo3
+    container_name: upload-server
+    ports:
+      - '8081:8081'
+    env_file:
+      - ./env/upload-server.env
+    depends_on:
+      mysqldb-service:
+        condition: service_healthy
+
+  google-cloud-storage-service:
+    build: ./GCS
+    container_name: GCS-server
+    ports:
+      - '8082:8082'
+  streaming-service:
+    build: ./StreamWebServer
+    container_name: streaming-server
+    ports:
+      - '8085:8085'
+    env_file:
+      - ./env/streaming-server.env
+    depends_on:
+       mysqldb-service:
+          condition: service_healthy
+
+  front-end-service:
+    build: ./Front-End
+    container_name: front-end-server
+    ports:
+      - '8080:8080'
+    env_file:
+      - ./env/front-end.env
+    depends_on:
+      - authentication-service
+      - google-cloud-storage-service
+      - streaming-service
+      - upload-service
+volumes:
+  mysql-data:
