@@ -46,7 +46,7 @@ public class UploadVideoController {
 
         HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(body, headers);
         restTemplate.postForObject(apiUrl, request, Video.class);
-        return "redirect:/";
+        return "redirect:/upload/";
     }
 
 

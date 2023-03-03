@@ -18,7 +18,7 @@ services:
     ports:
       - '8088:8088'
   upload-service:
-    build: ./demo3
+    build: ./UploadServer
     container_name: upload-server
     ports:
       - '8081:8081'
